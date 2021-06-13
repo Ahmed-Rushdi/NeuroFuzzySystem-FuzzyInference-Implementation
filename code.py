@@ -548,75 +548,80 @@ inf_set
 
 defuzzification(inf_set)
 
-"""#Discarded"""
+"""#Using built-in Library
 
-# nose = ctrl.Antecedent(np.arange(0,100,0.1),'nose')
-# teeth = ctrl.Antecedent(np.arange(0,100,0.1),'teeth')
-# lips = ctrl.Antecedent(np.arange(0,100,0.1),'lips')
-# forehead = ctrl.Antecedent(np.arange(0,25,0.1),'forehead')
-# eyebrows = ctrl.Antecedent(np.arange(0,100,0.1),'eyebrows')
-# eyes = ctrl.Antecedent(np.arange(0,100,0.1),'eyes')
-# cheeks = ctrl.Antecedent(np.arange(0,100,0.1),'cheeks')
-# chin = ctrl.Antecedent(np.arange(0,100,0.1),'chin')
+"""
 
-# nose["Wrinkled"] = fuzz.trimf(nose.universe,[0,40,60])
-# nose["Normal"] = fuzz.trimf(nose.universe,[40,60,100])
+nose = ctrl.Antecedent(np.arange(0,100,0.1),'nose')
+teeth = ctrl.Antecedent(np.arange(0,100,0.1),'teeth')
+lips = ctrl.Antecedent(np.arange(0,100,0.1),'lips')
+forehead = ctrl.Antecedent(np.arange(0,25,0.1),'forehead')
+eyebrows = ctrl.Antecedent(np.arange(0,100,0.1),'eyebrows')
+eyes = ctrl.Antecedent(np.arange(0,100,0.1),'eyes')
+cheeks = ctrl.Antecedent(np.arange(0,100,0.1),'cheeks')
+chin = ctrl.Antecedent(np.arange(0,100,0.1),'chin')
 
-# teeth["Not-visible"] = fuzz.trimf(teeth.universe,[0,10,30])
-# teeth["Slightly-out"] = fuzz.trimf(teeth.universe,[10,40,70])
-# teeth["Extra-open"] = fuzz.trimf(teeth.universe,[50,80,100])\
+nose["Wrinkled"] = fuzz.trimf(nose.universe,[40,40,60])
+nose["Normal"] = fuzz.trimf(nose.universe,[40,60,60])
 
-# lips["Pressed-closed"] = fuzz.trimf(lips.universe,[0,10,30])
-# lips["Normal"] = fuzz.trimf(lips.universe,[10,40,70])
-# lips["Open"] = fuzz.trimf(lips.universe,[50,80,100])
+teeth["Not-visible"] = fuzz.trimf(teeth.universe,[10,10,30])
+teeth["Slightly-out"] = fuzz.trimf(teeth.universe,[10,40,70])
+teeth["Extra-open"] = fuzz.trimf(teeth.universe,[50,70,70])\
 
-# forehead["Down & small"] = fuzz.trimf(forehead.universe,[0,2,4])
-# forehead["Normal"] = fuzz.trimf(forehead.universe,[2,8.5,15])
-# forehead["Stretched & bigger"] = fuzz.trimf(forehead.universe,[10,20,25])
+lips["Pressed-closed"] = fuzz.trimf(lips.universe,[10,10,30])
+lips["Normal"] = fuzz.trimf(lips.universe,[10,40,70])
+lips["Open"] = fuzz.trimf(lips.universe,[50,70,70])
 
-# eyebrows["Centered"] = fuzz.trimf(eyebrows.universe,[0,10,20])
-# eyebrows["Normal"] = fuzz.trimf(eyebrows.universe,[10,35,60])
-# eyebrows["Outward-stretched"] = fuzz.trimf(eyebrows.universe,[40,70,100])
+forehead["Down & small"] = fuzz.trimf(forehead.universe,[2,2,4])
+forehead["Normal"] = fuzz.trimf(forehead.universe,[2,8.5,15])
+forehead["Stretched & bigger"] = fuzz.trimf(forehead.universe,[10,15,15])
 
-# eyes["Pressed-closed"] = fuzz.trimf(eyes.universe,[0,5,10])
-# eyes["Closed"] = fuzz.trimf(eyes.universe,[5,15,30])
-# eyes["Normal-open"] = fuzz.trimf(eyes.universe,[20,45,70])
-# eyes["Extra-open"] = fuzz.trimf(eyes.universe,[50,80,100])
+eyebrows["Centered"] = fuzz.trimf(eyebrows.universe,[10,10,20])
+eyebrows["Normal"] = fuzz.trimf(eyebrows.universe,[10,35,60])
+eyebrows["Outward-stretched"] = fuzz.trimf(eyebrows.universe,[40,60,60])
 
-# cheeks["Flat & stretched"] = fuzz.trimf(cheeks.universe,[0,10,20])
-# cheeks["Normal"] = fuzz.trimf(cheeks.universe,[10,35,60])
-# cheeks["Filled & Up"] = fuzz.trimf(cheeks.universe,[40,70,100])
+eyes["Pressed-closed"] = fuzz.trimf(eyes.universe,[5,5,10])
+eyes["Closed"] = fuzz.trimf(eyes.universe,[5,15,30])
+eyes["Normal-open"] = fuzz.trimf(eyes.universe,[20,45,70])
+eyes["Extra-open"] = fuzz.trimf(eyes.universe,[50,70,70])
 
-# chin["Normal"] = fuzz.trimf(chin.universe,[0,40,60])
-# chin["Radical"] = fuzz.trimf(chin.universe,[40,60,100])
+cheeks["Flat & stretched"] = fuzz.trimf(cheeks.universe,[10,10,20])
+cheeks["Normal"] = fuzz.trimf(cheeks.universe,[10,35,60])
+cheeks["Filled & Up"] = fuzz.trimf(cheeks.universe,[40,60,60])
 
-# expression =  ctrl.Consequent(np.arange(0,80,0.1),"expression")
-# expression['Anger'] = fuzz.trimf(expression.universe,[0,5,10])
-# expression['Disgust'] = fuzz.trimf(expression.universe,[5,15,25])
-# expression['Sad'] = fuzz.trimf(expression.universe,[15,25,35])
-# expression['Normal'] = fuzz.trimf(expression.universe,[30,40,50])
-# expression['Happy'] = fuzz.trimf(expression.universe,[45,52.5,60])
-# expression['Surprise'] = fuzz.trimf(expression.universe,[55,65,75])
-# expression['Fear'] = fuzz.trimf(expression.universe,[70,75,80])
+chin["Normal"] = fuzz.trimf(chin.universe,[40,40,60])
+chin["Radical"] = fuzz.trimf(chin.universe,[40,60,60])
 
-# rule1 = ctrl.Rule(cheeks["Filled & Up"] & teeth["Slightly-out"] & lips["Open"], expression['Happy'])
-# rule2 = ctrl.Rule(eyebrows["Centered"] & lips["Normal"] & cheeks["Flat & stretched"], expression['Sad'])
-# rule3 = ctrl.Rule(eyebrows["Centered"] & lips["Pressed-closed"] & cheeks["Flat & stretched"] & teeth["Not-visible"], expression['Anger'])
-# rule4 = ctrl.Rule(eyes["Extra-open"] & lips["Open"] & eyebrows["Outward-stretched"], expression['Surprise'])
-# rule5 = ctrl.Rule(eyebrows["Normal"] & lips["Normal"] & cheeks["Flat & stretched"] & eyes["Normal-open"] & chin["Normal"], expression['Normal'])
-# rule6 = ctrl.Rule(eyebrows["Outward-stretched"] & cheeks["Normal"] & eyes["Extra-open"] & lips["Open"] & forehead["Stretched & bigger"], expression['Fear'])
-# rule7 = ctrl.Rule(eyebrows["Centered"] & cheeks["Filled & Up"] & nose["Wrinkled"], expression['Disgust'])
+expression =  ctrl.Consequent(np.arange(0,80,0.1),"expression")
+expression['Anger'] = fuzz.trimf(expression.universe,[5,5,10])
+expression['Disgust'] = fuzz.trimf(expression.universe,[5,15,25])
+expression['Sad'] = fuzz.trimf(expression.universe,[15,25,35])
+expression['Normal'] = fuzz.trimf(expression.universe,[30,40,50])
+expression['Happy'] = fuzz.trimf(expression.universe,[45,52.5,60])
+expression['Surprise'] = fuzz.trimf(expression.universe,[55,65,75])
+expression['Fear'] = fuzz.trimf(expression.universe,[70,75,75])
 
-# system = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5, rule6, rule7])
-# system_sim = ctrl.ControlSystemSimulation(system)
+expression.view()
 
-# system_sim.input['nose'] = nose_crisp
-# system_sim.input['teeth'] = teeth_crisp
-# system_sim.input['lips'] = lips_crisp
-# system_sim.input['forehead'] = forehead_crisp
-# system_sim.input['eyebrows'] = eyebrows_crisp
-# system_sim.input['cheeks'] = cheeks_crisp
-# system_sim.input['eyes'] = eyes_crisp
-# system_sim.input['chin'] = chin_crisp
+rule1 = ctrl.Rule(cheeks["Filled & Up"] & teeth["Slightly-out"] & lips["Open"], expression['Happy'])
+rule2 = ctrl.Rule(eyebrows["Centered"] & lips["Normal"] & cheeks["Flat & stretched"], expression['Sad'])
+rule3 = ctrl.Rule(eyebrows["Centered"] & lips["Pressed-closed"] & cheeks["Flat & stretched"] & teeth["Not-visible"], expression['Anger'])
+rule4 = ctrl.Rule(eyes["Extra-open"] & lips["Open"] & eyebrows["Outward-stretched"], expression['Surprise'])
+rule5 = ctrl.Rule(eyebrows["Normal"] & lips["Normal"] & cheeks["Flat & stretched"] & eyes["Normal-open"] & chin["Normal"], expression['Normal'])
+rule6 = ctrl.Rule(eyebrows["Outward-stretched"] & cheeks["Normal"] & eyes["Extra-open"] & lips["Open"] & forehead["Stretched & bigger"], expression['Fear'])
+rule7 = ctrl.Rule(eyebrows["Centered"] & cheeks["Filled & Up"] & nose["Wrinkled"], expression['Disgust'])
 
-# system_sim.compute()
+system = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5, rule6, rule7])
+system_sim = ctrl.ControlSystemSimulation(system)
+
+system_sim.input['nose'] = nose_crisp
+system_sim.input['teeth'] = teeth_crisp
+system_sim.input['lips'] = lips_crisp
+system_sim.input['forehead'] = forehead_crisp
+system_sim.input['eyebrows'] = eyebrows_crisp
+system_sim.input['cheeks'] = cheeks_crisp
+system_sim.input['eyes'] = eyes_crisp
+system_sim.input['chin'] = chin_crisp
+
+system_sim.compute()
+system_sim.output['expression']
